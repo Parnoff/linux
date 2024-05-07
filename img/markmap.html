@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:O,mm:h}=window,M=new O.Toolbar;M.attach(h);const oe=M.render();oe.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(oe)})})()</script><script>((i,L,f,r)=>{const w=i();window.mm=w.Markmap.create("svg#mindmap",(L||w.deriveOptions)(r),f)})(()=>window.markmap,null,{"content":"(Raiz) /","children":[{"content":"<strong>/bin</strong>","children":[{"content":"Contém comandos básicos do sistema que são usados durante o processo de inicialização.","children":[],"payload":{"lines":"2,3"}}],"payload":{"lines":"1,2"}},{"content":"<strong>/boot</strong>","children":[{"content":"Contém os arquivos necessários para o processo de inicialização.","children":[],"payload":{"lines":"4,5"}}],"payload":{"lines":"3,4"}},{"content":"<strong>/etc</strong>","children":[{"content":"Contém arquivos de configuração do sistema.","children":[],"payload":{"lines":"6,7"}}],"payload":{"lines":"5,6"}},{"content":"<strong>/home</strong>","children":[{"content":"Contém os diretórios pessoais dos usuários.","children":[],"payload":{"lines":"8,9"}}],"payload":{"lines":"7,8"}},{"content":"<strong>/lib</strong>","children":[{"content":"Contém bibliotecas compartilhadas usadas pelo sistema.","children":[],"payload":{"lines":"10,11"}}],"payload":{"lines":"9,10"}},{"content":"<strong>/usr</strong>","children":[{"content":"Contém programas e arquivos de dados para uso do sistema.","children":[],"payload":{"lines":"12,13"}}],"payload":{"lines":"11,12"}},{"content":"<strong>/var</strong>","children":[{"content":"Contém arquivos variáveis, como arquivos de log e spools de impressão.","children":[],"payload":{"lines":"14,15"}}],"payload":{"lines":"13,14"}}]},{"colorFreezeLevel":2})</script>
+</body>
+</html>
