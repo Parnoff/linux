@@ -1,8 +1,0 @@
-#!/bin/bash
-usuario="ubuntu"
-
-# Gerando as chaves ssh para o usuário Ubuntu
-sudo -u $usuario ssh-keygen -t rsa -b 2048 -f /home/$usuario/.ssh/id_rsa -N ""
-
-# Autorize seu acesso ssh a VM
-sudo bash -c 'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7W/yMvDoYqUqxTEsn6dJzg6MurfZFwPkEQ5DLKQeSV/cpSY5uUXijeEyfxdfTDQtiwZqdslEMWcRc0fBfxdnk0zGbk6NDiswzbyXC9jnw/0i8HA0oTpAv20uA29jc5iKIBLvLmB8MA7XX1+N7ILbTPfUk7EKpZqbokIh3mlGzfAdNeeBZRK8ZnOQmUtPis9hU8kApjPJsqKiNIeUrNMhrSkbwra9UvJNvsaAsZzlznVd32vPxopHBMsoyWAz3DjAtftvZsBGsZOth4cD5qE/2JC90K7TwvtFjGfaOpCsPZsirc5Ki4dinwFSrqQN6pwKGS8ih0xHbi/x/19GZLpt9tqaZhiBVzEp/vSJup9P3aXL9EpMJXw8YMLlSIFAverJ3LEMlOsXles6LMjTbNQnEfGR5oDbQL2CSk96+marL9zBBx9pzP+qxN09+xl8PZo+y9K+YI+tpmnIXV8LtRonfBZEZ+zepYv5lwYayT9ulqCCrCjTuw5G7d5OS/8JSMZU1b5DnnGwXxMe/QLPMAg3QgOO+UgHSJKfraUHcFSSHkEPqTUjqfanOHcyfwUJG8D24feZQ5opLuGBMrEOmnnetT9IzKvoT7tPpHpM3yO3kinyuUD0/1XlFTgibCdnR1AN4rBKqfgc8trNzfJFzQRyCCAMsy/RTCKJ+M+TTn/SdVQ== luis.parnoff@gmail.com" >> /home/'$usuario'/.ssh/authorized_keys'
