@@ -79,8 +79,51 @@ O Linux utiliza o `logrotate` para gerenciar e rotacionar os arquivos de log par
     Configurar alertas para eventos importantes usando ferramentas como `syslog-ng`, `rsyslog`, ou soluções de monitoramento como Prometheus com Grafana.
 
 ### Manipulando arquivos e Diretórios
+1. **Manipulando pastas**
+    - `mkdir`<br>
+        - Comando de criação básico:<br>
+            `mkdir folder1`<br>
+        - Criando as pastas recursivamente:<br>
+            `mkdir -p folder1\subfolder1`<br>
+        - Criando as pastas recursivamente e aplicando permissões<br>
+            `mkdir -m 775 -p folder1\subfolder1`<br>
+    - `rm`<br>
+        - No cenário de folders o rm deve ser utilizado para folders que não estão vazios.<br>
+        - Comando para excluir uma pasta:<br>
+            `rm folder1`
+        - Excluindo uma pasta de forma recursiva:<br>
+            `rm -rf folder1`
+    - `rmdir`<br>
+        - Utilizado para deletar folder vazios.<br>
+        - Deletando o dir:<br>
+            `rmdir meu_diretorio_vazio`
+
 ### Consultando arquivos e Diretórios (Avançado)
+1. **Pesquisando qualquer file com determinado conteúdo**
+    - No diretório / pesquisar qualquer arquivo com "teste*" recursivamente:<br>
+        `sudo find / -type f -name "test*"`<br>
+    - No diretório / pesquisar qualquer folder com "teste*" recursivamente:<br>
+        `sudo find / -type d -name "test*"`<br>
+    - Join com as duas funções anteriores:<br>
+        `sudo find / -type f,d -name "test*"`<br>
+
+2. **Utilizando o comando grep para pesquisar o conteúdo do arquivo**
+    - No diretório / pesquisar qualquer arquivo com o conteúdo "exemplo" recursivamente:<br>
+        `sudo find / -type f -exec grep -l "exemplo" {} +`
+
 ### Instalação e remoção de pacotes
+1. **Atualizando o repositório**<br>
+    `sudo apt update`
+2. **Pesquisando o pacote no repositório**<br>
+    `sudo apt search openjdk-17-jdk`
+3. **Instalando o pacote**<br>
+    `sudo apt-get install openjdk-17-jdk -y`
+4. **Removendo um pacote**
+    - **Removação simples:**<br>
+        `sudo apt-get remove openjdk-17-jdk`
+    - **Removendo o pacote, seus arquivos e depências:**<br>
+        `sudo apt-get autoremove openjdk-17-jdk`
+
 ### Trabalhando com serviços
 ### Consultando recursos do sistema operacional
 ### IAM (Permissões/Usuários/Grupos)
