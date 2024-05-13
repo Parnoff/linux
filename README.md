@@ -12,7 +12,6 @@ Essa documentação tem o objetivo de ser uma referência para a administração
 - IAM (Permissões/Usuários/Grupos)
 - Variáveis de Ambiente
 - Particionamento de Disco
-- Variáveis de Ambiente
 - Acesso SSH
 - Lista de Comandos Essenciais para DevOps
 
@@ -250,9 +249,106 @@ Para apagar um serviço que você criou usando o systemd, você pode seguir os s
     - **`sensors`**: Exibe informações sobre sensores de temperatura do hardware.
 
 ### IAM (Permissões/Usuários/Grupos)
+
+1. **Gerenciamento de Usuários e Grupos**
+    - Criar um Novo Usuário:<br>
+        ```sudo adduser novo_usuario```<br>
+        Isso criará um novo usuário e solicitará a definição de uma senha.
+    - Criar um Novo Grupo:<br>
+        ```sudo groupadd novo_grupo```<br>
+        Isso cria um novo grupo no sistema.<br>
+    - Adicionar Usuário a um Grupo Existente:<br>
+        ```sudo usermod -aG nome_grupo nome_usuario```<br>
+        Isso adiciona o usuário especificado ao grupo especificado.<br>
+    - Remover Usuário de um Grupo:<br>
+        ```sudo deluser nome_usuario nome_grupo```<br>
+        Isso remove o usuário especificado do grupo especificado.<br>
+    - Listar Grupos de um Usuário:<br>
+        ```groups nome_usuario```<br>
+        Isso lista todos os grupos aos quais o usuário especificado pertence.<br>
+    - Alterar Grupo Principal de um Usuário:<br>
+        ```sudo usermod -g novo_grupo nome_usuario```<br>
+        Isso altera o grupo principal do usuário para o grupo especificado.<br>
+
+2. **Controle de Permissões e Modificação de Atributos**
+
+- Permissões de Arquivos (chmod):<br>
+    - **chmod**: Altera as permissões de acesso de arquivos ou diretórios.<br>
+        Exemplo: Dar permissão de leitura, gravação e execução para o proprietário, e permissão de leitura e execução para grupo e outros.<br>
+        ```chmod 755 arquivo```
+
+    - **chmod +x**: Adiciona permissão de execução ao arquivo.<br>
+        Exemplo: Dar permissão de execução para todos os usuários.<br>
+        ```chmod +x script.sh```
+
+    - **chmod g+s**: Define o bit setgid no diretório, fazendo com que os arquivos criados dentro dele herdem o grupo do diretório.<br>
+        Exemplo:<br>
+        ```chmod g+s diretório```
+
+- Atributos de Arquivos (chattr):
+    - **chattr**: Modifica os atributos de um arquivo ou diretório.<br>
+        Exemplo: Tornar um arquivo imutável (não pode ser modificado, renomeado ou excluído).<br>
+        ```chattr +i arquivo```<br>
+        Para remover o atributo:<br>
+        ```chattr -i arquivo```
+
 ### Variáveis de Ambiente
+
+#### O que são Variáveis de Ambiente?
+Variáveis de ambiente são variáveis dinâmicas que contêm informações sobre o ambiente de execução de um processo ou usuário no sistema operacional. Elas armazenam dados como diretórios de busca para executáveis, configurações padrão para aplicativos, configurações de idioma, e outras informações de contexto.
+
+1. **Principais Variáveis de Ambiente no Linux**
+
+    - **`PATH`**: Esta é uma das variáveis mais importantes. Ela define os diretórios nos quais o sistema procura por programas executáveis. Quando você digita um comando no terminal, o sistema verifica os diretórios listados na variável `PATH` para encontrar o executável correspondente.
+    Exemplo:<br>
+        ```bash
+            echo $PATH
+        ```
+    - **`HOME`**: Esta variável contém o caminho para o diretório pessoal do usuário. Exemplo:<br>
+        ```bash
+            echo $HOME
+        ```
+    - **`USER`** ou **`USERNAME`**: Estas variáveis contêm o nome do usuário atualmente logado no sistema. Exemplo:<br>
+        ```bash
+            echo $USER
+        ```
+    - **`LANG`** ou **`LC_*`**: Estas variáveis controlam as configurações de localização e idioma do sistema. Exemplo:<br>
+        ```bash
+            echo $LANG
+        ```
+
+2. **Visualizando e Definindo Variáveis de Ambiente**
+
+    - **Visualizando uma Variável de Ambiente**:
+        ```bash
+        echo $NOME_DA_VARIAVEL
+        ```
+    - **Definindo uma Variável de Ambiente**:
+        ```bash
+        export NOME_DA_VARIAVEL="valor"
+        ```
+    - **Removendo uma Variável de Ambiente**:
+        ```bash
+        unset NOME_DA_VARIAVEL
+        ```
+
+3. **Exemplos Práticos**
+
+    - Exemplo 1: Utilizando Variáveis de Ambiente<br>
+        Suponha que você deseja adicionar um novo diretório ao `PATH` para que o sistema reconheça novos comandos. Você pode fazer o seguinte:<br>
+        ```bash
+            export PATH=$PATH:/caminho/do/novo/diretorio
+        ```
+    - Exemplo 2: Acessando Variáveis de Ambiente em um Script<br>
+        Você pode usar variáveis de ambiente em scripts Bash para acessar configurações globais ou passar parâmetros para os scripts. Por exemplo:
+        ```bash
+            #!/bin/bash
+
+            echo "Olá, $USER! Bem-vindo ao sistema."
+            echo "Seu diretório pessoal é: $HOME"
+        ```
+
 ### Particionamento de Disco
-### Variáveis de Ambiente
 ### Acesso SSH
 ### Lista de Comandos Essenciais para DevOps
 
