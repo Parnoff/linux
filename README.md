@@ -509,6 +509,17 @@ Para criar partições no Linux, você pode usar ferramentas como `fdisk`, `part
   ```
 
 ### Acesso SSH
+#### **Conectando via SSH**
+```bash
+ssh <user>@<ip e/ou host>
+# O dispositivo irá solicitar uma confirmação e depois a senha do usuário
+```
+#### **Desativando/ativando o serviço do SSH**
+```bash
+sudo systemctl disable --now ssh
+sudo systemctl enable --now ssh
+```
+
 ### Lista de Comandos Essenciais para DevOps
 
 
