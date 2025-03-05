@@ -519,7 +519,3 @@ ssh <user>@<ip e/ou host>
 sudo systemctl disable --now ssh
 sudo systemctl enable --now ssh
 ```
-
-### Lista de Comandos Essenciais para DevOps
-
-
