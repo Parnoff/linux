@@ -13,7 +13,6 @@ Essa documentação tem o objetivo de ser uma referência para a administração
 - Variáveis de Ambiente
 - Particionamento de Disco
 - Acesso SSH
-- Lista de Comandos Essenciais para DevOps
 
 ### **Estruturas dos Diretórios**
 ![Mapa Mental Estrutura de Diretórios](./img/markmap-estrutura-dir.png)
