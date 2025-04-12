@@ -13,6 +13,7 @@ Essa documentação tem o objetivo de ser uma referência para a administração
 - Variáveis de Ambiente
 - Particionamento de Disco
 - Acesso SSH
+- Ferramentas de Compactação e Descompactação
 
 ### **Estruturas dos Diretórios**
 ![Mapa Mental Estrutura de Diretórios](./img/markmap-estrutura-dir.png)
@@ -518,3 +519,165 @@ ssh <user>@<ip e/ou host>
 sudo systemctl disable --now ssh
 sudo systemctl enable --now ssh
 ```
+---
+### **Ferramentas de Compactação e Descompactação**
+#### **Introdução**
+As ferramentas de empacotamento e compressão de arquivos no Linux são essenciais para economizar espaço em disco, transferência de arquivos e backup de dados. As principais ferramentas incluem:
+
+- `gzip`
+- `bzip2`
+- `xz`
+- `zip`
+- `tar`
+
+Cada uma dessas ferramentas tem seus próprios usos e diferenças em termos de eficiência e compatibilidade.
+
+---
+
+#### **gzip**
+##### 1. **Descrição**
+O `gzip` (“GNU zip”) é uma ferramenta de compressão amplamente utilizada, baseada no algoritmo DEFLATE. Ele é rápido e comumente usado em sistemas Unix/Linux.
+
+##### 2. **Comandos principais**
+- Compactar um arquivo:
+```bash
+gzip arquivo.txt
+```
+- Descompactar um arquivo:
+```bash
+gunzip arquivo.txt.gz
+```
+- Compactar um diretório inteiro:
+```bash
+tar -czf arquivo.tar.gz diretorio/
+```
+- Verificar taxa de compressão:
+```bash
+gzip -l arquivo.txt.gz
+```
+### 3. **Caso de uso**
+- Compactar arquivos de log para economizar espaço no servidor.
+
+---
+
+#### **bzip2**
+##### 1. **Descrição**
+O `bzip2` usa o algoritmo de compressão Burrows-Wheeler e geralmente produz arquivos menores do que o `gzip`, mas com maior consumo de CPU.
+
+##### 2. **Comandos principais**
+- Compactar um arquivo:
+```bash
+bzip2 arquivo.txt
+```
+- Descompactar um arquivo:
+```bash
+bunzip2 arquivo.txt.bz2
+```
+- Compactar um diretório inteiro:
+```bash
+tar -cjf arquivo.tar.bz2 diretorio/
+```
+
+##### 3. **Caso de uso**
+- Ideal para compactação de grandes arquivos de backup devido à melhor taxa de compressão em relação ao `gzip`.
+
+---
+
+#### **xz**
+##### 1. **Descrição**
+O `xz` usa o algoritmo LZMA e oferece melhor compressão que `gzip` e `bzip2`, mas é mais lento.
+
+##### 2. **Comandos principais**
+- Compactar um arquivo:
+```bash
+xz arquivo.txt
+```
+- Descompactar um arquivo:
+```bash
+unxz arquivo.txt.xz
+```
+- Compactar um diretório inteiro:
+```bash
+tar -cJf arquivo.tar.xz diretorio/
+```
+
+##### 3. **Caso de uso**
+- Usado para distribuições de software Linux devido à sua alta taxa de compressão.
+
+---
+
+#### **zip**
+##### 1. **Descrição**
+O `zip` é popular no Windows e Linux, permitindo tanto compressão quanto arquivamento em um único arquivo.
+
+##### 2. **Comandos principais**
+- Compactar um arquivo:
+```bash
+zip arquivo.zip arquivo.txt
+```
+- Compactar um diretório:
+```bash
+zip -r arquivo.zip diretorio/
+```
+- Descompactar um arquivo:
+```bash
+unzip arquivo.zip
+```
+
+##### 3. **Caso de uso**
+- Compartilhamento de arquivos entre Linux e Windows, devido à ampla compatibilidade.
+
+---
+
+#### **tar**
+
+##### 1. **Descrição**
+O `tar` (Tape Archive) é uma ferramenta de arquivamento que pode ser usada junto com `gzip`, `bzip2` ou `xz`.
+
+##### 2. **Comandos principais**
+- Criar um arquivo tar:
+```bash
+tar -cf arquivo.tar diretorio/
+```
+- Criar e compactar com gzip:
+```bash
+tar -czf arquivo.tar.gz diretorio/
+```
+- Criar e compactar com bzip2:
+```bash
+tar -cjf arquivo.tar.bz2 diretorio/
+```
+- Criar e compactar com xz:
+```bash
+tar -cJf arquivo.tar.xz diretorio/
+```
+- Extrair um arquivo tar:
+```bash
+tar -xf arquivo.tar
+```
+- Extrair um arquivo tar compactado:
+```bash
+tar -xzf arquivo.tar.gz
+```
+
+##### 3. **Caso de uso**
+- Criar backups de diretórios ou pacotes para distribuição de software.
+
+---
+
+#### **Comparativo entre as ferramentas**
+
+| Ferramenta | Algoritmo | Compressão | Velocidade | Melhor uso |
+|------------|------------|-------------|-------------|-------------|
+| gzip | DEFLATE | Média | Rápida | Logs e arquivos simples |
+| bzip2 | Burrows-Wheeler | Alta | Moderada | Backups grandes |
+| xz | LZMA | Muito alta | Lenta | Distribuição de software |
+| zip | DEFLATE | Média | Rápida | Compatibilidade Windows |
+| tar | Nenhum (arquivador) | Nenhuma | Rápida | Agrupar arquivos |
+
+---
+
+#### **Conclusão**
+Cada ferramenta tem um uso específico e pode ser combinada com outras para atender diferentes necessidades. Escolha a melhor opção com base na compatibilidade, taxa de compressão e velocidade de execução.
+
+---
